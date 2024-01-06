@@ -1,5 +1,7 @@
 import { createRouter, createWebHistory } from 'vue-router'
 
+import { start, close } from './nprogress'
+
 const router = createRouter({
   history: createWebHistory(),
   routes: [
@@ -71,4 +73,20 @@ const router = createRouter({
     }
   ]
 })
+
+// 路由守卫
+router.beforeEach((to, from, next) => {
+  // 开始进度条
+  start()
+  next()
+})
+
+router.afterEach((to) => {
+  if (to.meta && to.meta.title) {
+    document.title = ('CMS-' + to.meta.title) as string
+  }
+  // 关闭进度条
+  close()
+})
+
 export default router
