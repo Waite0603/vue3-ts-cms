@@ -1,4 +1,4 @@
-import { $post } from '../utils/request'
+import { $get, $post } from '../utils/request'
 import { ElMessage } from 'element-plus'
 // import { md5 } from 'md5js'
 
@@ -21,9 +21,14 @@ export const $Login = async (params: LoginParams) => {
     // 返回true，表示登录成功, 用于路由守卫切换路由
     return true
   } else {
-    console.log(data.msg)
     ElMessage.error(data.msg)
   }
 
   return false
+}
+
+// 获取账户信息
+export const $GetUserInfo = async (username: string) => {
+  const res = await $get(`/my/getUserInfo?username=${username}`)
+  return res.data
 }

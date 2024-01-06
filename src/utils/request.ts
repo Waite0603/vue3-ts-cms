@@ -13,7 +13,6 @@ service.interceptors.request.use(function (config) {
   const token = sessionStorage.getItem('token')
   if (token) {
     config.headers['Authorization'] = token
-    console.log(token)
   }
   return config
 })

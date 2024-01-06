@@ -253,6 +253,7 @@
             <span class="nav-link-text ms-1">入住用户</span>
           </a>
         </li>
+        <btton type="button" @click="logout" class="btn bg-gradient-danger mt-3 w-95">退出登录</btton>
       </ul>
     </div>
   </aside>
@@ -276,8 +277,8 @@
           <ul class="navbar-nav justify-content-end">
             <li class="nav-item d-flex align-items-center">
               <a href="javascript:;" class="nav-link text-body font-weight-bold px-0">
-                <i class="fa fa-user me-sm-1"></i>
-                <span class="d-sm-inline d-none">Sign In</span>
+                <el-icon class="me-sm-1"><Avatar /></el-icon>
+                <span class="d-sm-inline d-none">{{ userStore.userData.username }}</span>
               </a>
             </li>
           </ul>
@@ -288,3 +289,37 @@
     <router-view> </router-view>
   </main>
 </template>
+
+<script setup lang="ts">
+import { onMounted } from 'vue'
+import { useUserStore } from '../store/user'
+import { useRouter } from 'vue-router'
+import { ElMessage, ElMessageBox } from 'element-plus'
+
+const userStore = useUserStore()
+const router = useRouter()
+
+// 退出登录
+const logout = () => {
+  ElMessageBox.confirm('确认退出登录吗？', '提示', {
+    confirmButtonText: '确定',
+    cancelButtonText: '取消',
+    type: 'warning'
+  })
+    .then(() => {
+      userStore.clearUser()
+      ElMessage.success('退出登录成功')
+      router.push('/login')
+    })
+    .catch(() => {
+      // 这个函数是空的，因为我们不需要在用户取消时做任何事情
+    })
+}
+
+onMounted(() => {
+  if (!userStore.userData.username) {
+    ElMessage.warning('请先登录')
+    router.push('/login')
+  }
+})
+</script>

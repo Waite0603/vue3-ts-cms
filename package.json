@@ -16,6 +16,8 @@
     "element-plus": "^2.4.4",
     "md5js": "^1.0.7",
     "nprogress": "^0.2.0",
+    "pinia": "^2.1.7",
+    "pinia-plugin-persistedstate": "^3.2.1",
     "vue": "^3.2.13",
     "vue-router": "^4.0.3"
   },
