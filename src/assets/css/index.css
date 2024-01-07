@@ -8,6 +8,10 @@
   box-sizing: border-box;
 }
 
+body {
+  background: #F8F9FA
+}
+
 
 
 /* 引用所有css */

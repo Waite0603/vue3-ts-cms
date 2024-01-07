@@ -1,15 +1,11 @@
 <template>
   <aside
     class="sidenav navbar navbar-vertical navbar-expand-xs border-0 border-radius-xl my-3 fixed-start ms-3"
-    style="overflow-y: hidden; background-color: #fff; background-clip: border-box"
+    style="overflow-y: hidden"
     id="sidenav-main"
   >
     <div class="sidenav-header">
-      <i
-        class="fas fa-times p-3 cursor-pointer text-secondary opacity-5 position-absolute end-0 top-0 d-none d-xl-none"
-        aria-hidden="true"
-        id="iconSidenav"
-      ></i>
+      <el-icon class="position-absolute end-0 top-0 d-xl-none m-2"><Close /></el-icon>
       <a class="navbar-brand m-0" href="/" target="_blank">
         <img src="../assets/img/logo-ct.png" class="navbar-brand-img h-100" alt="main_logo" />
         <span class="ms-2 font-weight-bold">Vue3-Ts-CMS</span>
@@ -253,7 +249,7 @@
             <span class="nav-link-text ms-1">入住用户</span>
           </a>
         </li>
-        <btton type="button" @click="logout" class="btn bg-gradient-danger mt-3 w-95">退出登录</btton>
+        <button type="button" @click="logout" class="btn bg-gradient-danger mt-3 w-95">退出登录</button>
       </ul>
     </div>
   </aside>

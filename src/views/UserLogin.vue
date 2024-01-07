@@ -108,7 +108,7 @@ import { reactive, ref, onMounted } from 'vue'
 import { ElMessage, type FormInstance, type FormRules } from 'element-plus'
 import { useRouter } from 'vue-router'
 
-import { $Login, $GetUserInfo } from '@/api/admin'
+import { Login, GetUserInfo } from '@/api/admin'
 
 // 导入 user 全局状态
 import { useUserStore } from '../store/user'
@@ -134,10 +134,10 @@ const onSubmit = (formEl: FormInstance | undefined) => {
     if (valid) {
       // 请求登录接口
       // 异步为了等待接口返回数据
-      const res = await $Login(loginFrom)
+      const res = await Login(loginFrom)
       if (res) {
         // $GetUserInfo(loginFrom.username)
-        const userInfo = await $GetUserInfo(loginFrom.username)
+        const userInfo = await GetUserInfo(loginFrom.username)
         userStore.setUser(userInfo)
         // 登录成功后跳转到首页
         router.push({ path: '/index' })

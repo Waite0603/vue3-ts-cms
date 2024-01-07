@@ -7,7 +7,7 @@ interface LoginParams {
   password: string
 }
 
-export const $Login = async (params: LoginParams) => {
+export const Login = async (params: LoginParams) => {
   // md5加密
   // params.password = md5(params.password, 32)
   const res = await $post('/api/login', params)
@@ -28,7 +28,7 @@ export const $Login = async (params: LoginParams) => {
 }
 
 // 获取账户信息
-export const $GetUserInfo = async (username: string) => {
+export const GetUserInfo = async (username: string) => {
   const res = await $get(`/my/getUserInfo?username=${username}`)
   return res.data
 }
