@@ -10,7 +10,7 @@ const service = axio.create({
 // 请求拦截器
 service.interceptors.request.use(function (config) {
   // 在发送请求之前做些什么
-  const token = sessionStorage.getItem('token')
+  const token = localStorage.getItem('token')
   if (token) {
     config.headers['Authorization'] = token
   }

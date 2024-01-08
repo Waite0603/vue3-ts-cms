@@ -13,7 +13,7 @@ export const useUserStore = defineStore({
     }
 
     const clearUser = () => {
-      sessionStorage.clear()
+      localStorage.clear()
       userData.value = ''
     }
 
