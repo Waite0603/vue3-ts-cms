@@ -77,8 +77,6 @@ const onSubmit = (formEl: FormInstance | undefined) => {
 const handleCancel = () => {
   // 如果是修改，取消后需要重置表单
   if (formData.value.roleId) {
-    console.log('取消修改')
-    console.log(roleDataBackup.value)
     formData.value.roleName = roleDataBackup.value.roleName
   }
 }

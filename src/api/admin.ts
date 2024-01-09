@@ -15,7 +15,7 @@ export const Login = async (params: LoginParams) => {
   if (data.code === 200) {
     // 登录成功，将token存入sessionStorage
     // 在关闭浏览器后，sessionStorage中的数据会被清除
-    sessionStorage.setItem('token', data.token)
+    localStorage.setItem('token', data.token)
     ElMessage.success('登录成功')
 
     // 返回true，表示登录成功, 用于路由守卫切换路由
@@ -31,4 +31,21 @@ export const Login = async (params: LoginParams) => {
 export const GetUserInfo = async (username: string) => {
   const res = await $get(`/my/getUserInfo?username=${username}`)
   return res.data
+}
+
+// 获取用户列表
+export const getUserList = async (page = 1, pageSize = 5, roleId = 0) => {
+  const res = await $get(`/my/userList?page=${page}&pageSize=${pageSize}&roleId=${roleId}`)
+  return res.data
+}
+
+// 修改用户信息
+export const userUpdate = async (data: object) => {
+  const res = await $post('/my/editUser', data)
+  return res.data
+}
+
+// 删除用户
+export const delUser = (id: number) => {
+  return $get(`/my/deleteUser?id=${id}`)
 }
