@@ -34,12 +34,6 @@ const router = createRouter({
           component: () => import('../views/user/MineView.vue')
         },
         {
-          path: 'setPwd',
-          name: '修改密码',
-          meta: { title: '修改密码' },
-          component: () => import('../views/user/SetPwdView.vue')
-        },
-        {
           path: 'role',
           name: '角色管理',
           meta: { title: '角色管理' },
