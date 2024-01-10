@@ -1,5 +1,10 @@
 <template>
-  <el-dialog title="修改密码" v-model="dialogVisible" class="col-lg-4 col-md-4 mb-md-0 mb-4 card text-center">
+  <el-dialog
+    title="修改密码"
+    v-model="dialogVisible"
+    @close="handleCancel"
+    class="col-lg-4 col-md-4 mb-md-0 mb-4 card text-center"
+  >
     <el-form ref="ruleFormRef" :model="ruleForm" status-icon :rules="rules" min-width="120px" class="demo-ruleForm">
       <el-form-item label="密码" prop="pass">
         <el-input v-model="ruleForm.pass" type="password" show-password />
@@ -92,6 +97,12 @@ const submitForm = (formEl: FormInstance | undefined) => {
 const resetForm = (formEl: FormInstance | undefined) => {
   if (!formEl) return
   formEl.resetFields()
+}
+
+// 关闭弹窗
+const handleCancel = () => {
+  // 重置表单
+  resetForm(ruleFormRef.value)
 }
 
 defineExpose({
