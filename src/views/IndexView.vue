@@ -1,12 +1,12 @@
 <template>
   <aside
-    class="sidenav navbar navbar-vertical navbar-expand-xs border-0 border-radius-xl my-3 fixed-start ms-3"
+    class="sidenav navbar navbar-vertical navbar-expand-xs border-0 border-radius-xl my-3 fixed-start ms-3 d-none"
     style="overflow-y: hidden"
     id="sidenav-main"
   >
     <div class="sidenav-header">
-      <el-icon class="position-absolute end-0 top-0 d-xl-none m-2"><Close /></el-icon>
-      <a class="navbar-brand m-0" href="/" target="_blank">
+      <a class="navbar-brand m-0" href="javascript:;">
+        <el-icon class="position-absolute end-0 top-0 d-xl-none m-2" @click="hideSidebar"><Close /></el-icon>
         <img src="../assets/img/logo-ct.png" class="navbar-brand-img h-100" alt="main_logo" />
         <span class="ms-2 font-weight-bold">Vue3-Ts-CMS</span>
       </a>
@@ -304,6 +304,14 @@
     >
       <div class="container-fluid py-1 px-3">
         <nav aria-label="breadcrumb">
+          <a
+            href="javascript:;"
+            class="btn btn-sm btn-neutral btn-round me-3 d-none"
+            @click="showSidebar"
+            id="btn-show-sidebar"
+          >
+            <el-icon><Menu /></el-icon>
+          </a>
           <ol class="breadcrumb bg-transparent mb-0 pb-0 pt-1 px-0 me-sm-6 me-5">
             <li class="breadcrumb-item text-sm"><a class="opacity-5 text-dark" href="javascript:;">Pages</a></li>
             <li class="breadcrumb-item text-sm text-dark active" aria-current="page">Dashboard</li>
@@ -352,6 +360,19 @@ const logout = () => {
     .catch(() => {
       // 这个函数是空的，因为我们不需要在用户取消时做任何事情
     })
+}
+
+// 显示侧边栏
+const showSidebar = () => {
+  document.getElementById('sidenav-main')?.classList.remove('d-none')
+  document.getElementById('sidenav-main')?.classList.add('bg-white')
+}
+
+// 隐藏侧边栏
+const hideSidebar = () => {
+  document.getElementById('sidenav-main')?.classList.remove('bg-white')
+  document.getElementById('sidenav-main')?.classList.remove('fixed-start')
+  document.getElementById('sidenav-main')?.classList.add('d-none')
 }
 
 onMounted(() => {
