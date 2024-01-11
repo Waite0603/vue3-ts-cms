@@ -65,8 +65,7 @@ const validatePass2 = (rule: any, value: any, callback: any) => {
 
 const ruleForm = reactive({
   pass: '',
-  checkPass: '',
-  age: ''
+  checkPass: ''
 })
 
 const rules = reactive<FormRules<typeof ruleForm>>({
