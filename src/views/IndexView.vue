@@ -1,7 +1,6 @@
 <template>
   <aside
     class="sidenav navbar navbar-vertical navbar-expand-xs border-0 border-radius-xl my-3 fixed-start ms-3 d-none"
-    style="overflow-y: hidden"
     id="sidenav-main"
   >
     <div class="sidenav-header">
