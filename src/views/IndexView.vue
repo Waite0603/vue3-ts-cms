@@ -372,7 +372,7 @@
 </template>
 
 <script setup lang="ts">
-import { onMounted } from 'vue'
+import { onMounted, ref, Ref } from 'vue'
 import { useUserStore } from '../store/user'
 import { useRouter } from 'vue-router'
 import { ElMessage, ElMessageBox } from 'element-plus'
@@ -415,5 +415,32 @@ onMounted(() => {
     ElMessage.warning('请先登录')
     router.push('/login')
   }
+})
+
+// 以下功能是动态添加索引
+const currentUrl = router.currentRoute.value.path
+console.log(currentUrl)
+
+// 在组件挂载后执行操作
+onMounted(() => {
+  const sidenavMain = document.getElementById('sidenav-main')
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  let aElements: any[] = []
+  if (sidenavMain) {
+    aElements = Array.from(sidenavMain.querySelectorAll('a'))
+  }
+
+  // 遍历所有的a元素
+  aElements.forEach((element: any) => {
+    // 获取每个a元素的href值
+    const hrefValue = element.getAttribute('href')
+    console.log(hrefValue)
+
+    // 检查当前页面的URL是否与a元素的href值完全匹配
+    if (currentUrl === hrefValue) {
+      // 如果匹配成功，在a元素中增加一个class：active
+      element.classList.add('active')
+    }
+  })
 })
 </script>
