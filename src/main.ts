@@ -6,6 +6,7 @@ import { createPinia } from 'pinia'
 import piniaPluginPersistedstate from 'pinia-plugin-persistedstate'
 
 import ElementPlus from 'element-plus'
+import JsonExcel from 'vue-json-excel3'
 import 'element-plus/dist/index.css'
 import './assets/css/index.css'
 
@@ -23,4 +24,5 @@ pinia.use(piniaPluginPersistedstate)
 app.use(router)
 app.use(pinia)
 app.use(ElementPlus)
+app.component('downloadExcel', JsonExcel)
 app.mount('#app')
