@@ -9,7 +9,7 @@
                 <h6>RoomType table</h6>
               </div>
               <div class="col-6 text-end">
-                <a class="btn bg-gradient-dark mb-0" href="javascript:;"
+                <a class="btn bg-gradient-dark mb-0" href="javascript:;" @click="addRole"
                   ><i class="fas fa-plus" aria-hidden="true"></i>添加</a
                 >
               </div>
@@ -74,8 +74,8 @@
                         </span>
                         <template #dropdown>
                           <el-dropdown-menu>
-                            <el-dropdown-item>修改</el-dropdown-item>
-                            <el-dropdown-item>删除</el-dropdown-item>
+                            <el-dropdown-item @click="handleEditRole()">编辑</el-dropdown-item>
+                            <el-dropdown-item @click="handleDelRole(roomType)">删除</el-dropdown-item>
                           </el-dropdown-menu>
                         </template>
                       </el-dropdown>
@@ -89,19 +89,61 @@
       </div>
     </div>
   </div>
+  <EditRoom ref="AddorEditRef" @success="loadUser"></EditRoom>
 </template>
 
 <script setup lang="ts">
-import { onMounted, ref } from 'vue'
-import { getRoomType } from '../../api/roomType'
+import { onMounted, ref, Ref } from 'vue'
+import { getRoomType, delRoomType } from '../../api/roomType'
+import EditRoom from '../../components/room/EditRoom.vue'
+import { ElMessage, ElMessageBox } from 'element-plus'
 
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
-const roomTypeList: any = ref([])
+// 定义 roomType 类型
+interface RoomType {
+  roomTypeId: number
+  roomTypeName: string
+  bedNum: number
+  roomTypePrice: number
+  typeDescription: string
+}
+
+const roomTypeList: Ref<RoomType[]> = ref([])
+let AddorEditRef = ref()
+
+// 添加房间类型
+const addRole = () => {
+  AddorEditRef.value.open({})
+}
+
+// 编辑房间类型
+const handleEditRole = () => {
+  ElMessage.warning('暂未开放')
+}
+
+// 删除房间类型
+const handleDelRole = (roomType: RoomType) => {
+  ElMessageBox.confirm('你确定要删除该角色嘛', 'Warning', {
+    confirmButtonText: '确定',
+    cancelButtonText: '取消',
+    type: 'warning'
+  })
+    .then(async () => {
+      let res = await delRoomType(roomType.roomTypeId)
+      if (res.code == 200) {
+        ElMessage.success('删除成功')
+        loadUser()
+      } else {
+        ElMessage.error(res.msg)
+      }
+    })
+    .catch(() => {
+      ElMessage.info('已取消删除')
+    })
+}
 
 const loadUser = async () => {
   let res = await getRoomType(1, 100)
   roomTypeList.value = res
-  console.log(res)
 }
 onMounted(() => {
   loadUser()
