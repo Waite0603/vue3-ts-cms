@@ -1,6 +1,12 @@
 import axio from 'axios'
 import { baseURL_dev } from '../config/baseURL'
 
+import { ElMessage } from 'element-plus'
+import router from '../router'
+import { useUserStore } from '../store/user'
+
+const userStore = useUserStore()
+
 // 初始化 axios 对象
 const service = axio.create({
   baseURL: baseURL_dev,
@@ -47,11 +53,11 @@ service.interceptors.response.use(
     const res = response.data
     if (res.code !== 200) {
       // 401: token 过期
-      // if (res.code === 401) {
-      //   userStore.clearUser()
-      //   ElMessage.success('退出登录成功')
-      //   router.push('/login')
-      // }
+      if (res.code === 401) {
+        userStore.clearUser()
+        ElMessage.warning('登录过期，请重新登录')
+        router.push('/login')
+      }
     } else {
       return response
     }

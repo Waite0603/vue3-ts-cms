@@ -372,7 +372,7 @@
 </template>
 
 <script setup lang="ts">
-import { onMounted, ref, Ref } from 'vue'
+import { onMounted } from 'vue'
 import { useUserStore } from '../store/user'
 import { useRouter } from 'vue-router'
 import { ElMessage, ElMessageBox } from 'element-plus'
@@ -431,6 +431,7 @@ onMounted(() => {
   }
 
   // 遍历所有的a元素
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   aElements.forEach((element: any) => {
     // 获取每个a元素的href值
     const hrefValue = element.getAttribute('href')

@@ -159,7 +159,8 @@ onBeforeUnmount(() => {
   editor.destroy()
 })
 
-const handleCreated = (editor) => {
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+const handleCreated = (editor: any) => {
   editorRef.value = editor // 记录 editor 实例，重要！
 }
 // 将状态暴露出去
