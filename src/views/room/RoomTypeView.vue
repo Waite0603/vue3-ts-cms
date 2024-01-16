@@ -1,4 +1,5 @@
 <template>
+  <navbarView position="客房管理" details="房型管理"> </navbarView>
   <div class="container-fluid py-4">
     <div class="row">
       <div class="col-12">

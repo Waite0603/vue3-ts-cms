@@ -10,11 +10,15 @@ import JsonExcel from 'vue-json-excel3'
 import 'element-plus/dist/index.css'
 import './assets/css/index.css'
 
+import navbarView from './views/layout/navbarView.vue'
+
 import * as ElementPlusIconsVue from '@element-plus/icons-vue'
 
 const app = createApp(App)
 const pinia = createPinia()
 
+// 全局注册组件
+app.component('navbarView', navbarView)
 for (const [key, component] of Object.entries(ElementPlusIconsVue)) {
   app.component(key, component)
 }

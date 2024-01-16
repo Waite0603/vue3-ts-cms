@@ -1,4 +1,5 @@
 <template>
+  <navbarView position="设置" details="个人中心"> </navbarView>
   <div class="pt-6 pb-2">
     <div class="card card-body blur shadow-blur mx-4 mt-n6 overflow-hidden">
       <div class="row gx-4">

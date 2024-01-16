@@ -1,4 +1,5 @@
 <template>
+  <navbarView position="客户管理" details="入住客户`"> </navbarView>
   <div class="container-fluid py-4">
     <div class="row">
       <div class="col-12">
@@ -118,7 +119,6 @@ const guestList: Ref<any> = ref([])
 const loadGuestList = async () => {
   const res = await getGuestList()
   guestList.value = res
-  console.log(guestList.value)
 }
 
 // 格式化时间

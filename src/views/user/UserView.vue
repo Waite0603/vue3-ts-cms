@@ -1,4 +1,5 @@
 <template>
+  <navbarView position="账户管理" details="用户管理"> </navbarView>
   <div class="container-fluid py-4">
     <div class="row">
       <div class="col-12">
