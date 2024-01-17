@@ -61,6 +61,13 @@
                         @keyup.enter="onSubmit(ruleFormRef)"
                       ></el-input>
                     </el-form-item>
+                    <div class="form-check form-switch ps-0">
+                      <input class="form-check-input ms-auto" type="checkbox" v-model="loginFrom.rememberMe" /><label
+                        class="form-check-label text-body ms-3 text-truncate w-80 mb-0"
+                        for="flexSwitchCheckDefault"
+                        >记住账户和密码</label
+                      >
+                    </div>
                     <div class="text-center">
                       <button type="button" class="btn bg-gradient-info w-100 mt-4 mb-0" @click="onSubmit(ruleFormRef)">
                         Sign in
@@ -120,13 +127,25 @@ const router = useRouter()
 
 const loginFrom = reactive({
   username: '',
-  password: ''
+  password: '',
+  rememberMe: false
 })
 
 const rules = reactive<FormRules<typeof loginFrom>>({
   username: [{ required: true, message: 'Please input username', trigger: 'blur' }],
   password: [{ required: true, message: 'Please input password', trigger: 'blur' }]
 })
+
+// 检查 localStorage 中是否有记住密码的信息
+const checkRememberMe = () => {
+  const rememberMe = localStorage.getItem('rememberMe')
+  if (rememberMe) {
+    const rememberMeObj = JSON.parse(rememberMe)
+    loginFrom.username = rememberMeObj.username
+    loginFrom.password = rememberMeObj.password
+    loginFrom.rememberMe = rememberMeObj.rememberMe
+  }
+}
 
 const onSubmit = (formEl: FormInstance | undefined) => {
   if (!formEl) return
@@ -138,6 +157,14 @@ const onSubmit = (formEl: FormInstance | undefined) => {
       if (res) {
         // $GetUserInfo(loginFrom.username)
         const userInfo = await GetUserInfo(loginFrom.username)
+        // 如果记住密码，将登录信息存储到 localStorage 中
+        if (loginFrom.rememberMe) {
+          localStorage.setItem('rememberMe', JSON.stringify(loginFrom))
+        }
+        // 如果没有记住密码，清除 localStorage 中的登录信息
+        else {
+          localStorage.removeItem('rememberMe')
+        }
         userStore.setUser(userInfo)
         // 登录成功后跳转到首页
         router.push({ path: '/index' })
@@ -151,6 +178,7 @@ const onSubmit = (formEl: FormInstance | undefined) => {
 
 // 如果 pinia 中cun有 user 信息，说明已经登录过了，直接跳转到首页
 onMounted(() => {
+  checkRememberMe()
   if (userStore.userData.username) {
     ElMessage.success('您已经登录过了')
     router.push({ path: '/index' })

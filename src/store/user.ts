@@ -13,7 +13,8 @@ export const useUserStore = defineStore({
     }
 
     const clearUser = () => {
-      localStorage.clear()
+      // 清理 token 以及 user
+      localStorage.removeItem('token')
       userData.value = ''
     }
 
