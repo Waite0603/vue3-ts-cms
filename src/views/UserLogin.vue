@@ -103,7 +103,7 @@
     <div class="container">
       <div class="row">
         <div class="col-8 mx-auto text-center mt-1">
-          <p class="mb-0 text-secondary">Copyright © 2022 Soft by Creative Tim.</p>
+          <p class="mb-0 text-secondary">Copyright © 2024 by Waite Wang.</p>
         </div>
       </div>
     </div>

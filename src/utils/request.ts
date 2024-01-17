@@ -46,6 +46,8 @@ service.interceptors.request.use(function (config) {
   return config
 })
 
+let isTokenExpired = false
+
 // 响应拦截器
 service.interceptors.response.use(
   function (response) {
@@ -54,9 +56,13 @@ service.interceptors.response.use(
     if (res.code !== 200) {
       // 401: token 过期
       if (res.code === 401) {
-        userStore.clearUser()
-        ElMessage.warning('登录过期，请重新登录')
-        router.push('/login')
+        if (!isTokenExpired) {
+          isTokenExpired = true
+          userStore.clearUser()
+          // 面对多个请求同时过期的情况，只弹出一次提示
+          ElMessage.warning('登录过期，请重新登录')
+          router.push('/login')
+        }
       }
     } else {
       return response
