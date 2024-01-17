@@ -63,7 +63,7 @@
                     </el-form-item>
                     <div class="form-check form-switch ps-0">
                       <input class="form-check-input ms-auto" type="checkbox" v-model="loginFrom.rememberMe" /><label
-                        class="form-check-label text-body ms-3 text-truncate w-80 mb-0"
+                        class="form-check-label text-body ms-2 text-truncate w-80 mb-0"
                         for="flexSwitchCheckDefault"
                         >记住账户和密码</label
                       >

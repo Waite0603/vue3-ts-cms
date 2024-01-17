@@ -12,7 +12,13 @@ body {
   background: #F8F9FA
 }
 
+.el-message-box {
+  border-radius: 15px
+}
 
+.el-message {
+  border-radius: 15px
+}
 
 /* 引用所有css */
 @import './nucleo-icons.css';
