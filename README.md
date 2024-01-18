@@ -52,21 +52,23 @@ Vue-TS-CMS 是一个酒店管理系统，基于 Vue3.0 + TypeScript + Vite + Ele
 
 ## 项目截图
 
-![](https://qiniu.waite.wang/202401172231306.png)
+![202401172231306](https://github.com/waite0603/vue3-ts-cms/assets/75354124/3e09664a-048d-4aef-a3fb-5f89145179db)
 
-![](https://qiniu.waite.wang/202401172241004.png)
+![screencapture-127-0-0-1-8080-index-2024-01-17-22_40_21](https://github.com/waite0603/vue3-ts-cms/assets/75354124/260e1117-817a-4989-bbdd-f927f1f899bf)
 
-![](https://qiniu.waite.wang/202401172241971.png)
+![202401172241971](https://github.com/waite0603/vue3-ts-cms/assets/75354124/265836bc-5e32-4d2f-87fb-5a294d8bc7ab)
 
-![](https://qiniu.waite.wang/202401172242456.png)
+![202401172242456](https://github.com/waite0603/vue3-ts-cms/assets/75354124/5940a7d8-2649-4e37-a958-aad22bafb249)
 
-![](https://qiniu.waite.wang/202401172242665.png)
+![screencapture-127-0-0-1-8080-index-room-2024-01-17-22_42_23](https://github.com/waite0603/vue3-ts-cms/assets/75354124/506dee19-d1b8-4b33-a142-42d3bd14a7e8)
 
-![](https://qiniu.waite.wang/202401172242917.png)
+![202401172242917](https://github.com/waite0603/vue3-ts-cms/assets/75354124/ee29fa1f-c72b-4211-8367-2bdfd5beb045)
 
-![](https://qiniu.waite.wang/202401172243347.png)
+![screencapture-127-0-0-1-8080-index-mine-2024-01-17-22_43_02](https://github.com/waite0603/vue3-ts-cms/assets/75354124/a5eff515-cc53-406e-9365-be088d99e250)
 
 > 以上都是响应式布局, 适配移动端
+
+![未标题-1](https://github.com/waite0603/vue3-ts-cms/assets/75354124/a3da11eb-dc97-4ba2-9d8d-4399a64fe86a)
 
 ## 可以提高的地方
 
